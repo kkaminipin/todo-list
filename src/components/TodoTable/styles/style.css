@@ -1,0 +1,19 @@
+.todo table tbody tr td, .todo table thead tr th {
+  padding: 1rem;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+.todo table {
+  width: 80rem;
+}
+.todo table thead {
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+}
+.todo table tbody {
+  border-left: 1px solid #fff;
+}
+.todo table tbody tr td {
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */

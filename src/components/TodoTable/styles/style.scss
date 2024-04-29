@@ -1,0 +1,25 @@
+@import 'abstracts/extends';
+
+.todo {
+  table {
+    width: 80rem;
+    thead {
+      border-top: 1px solid #fff;
+      border-left: 1px solid #fff;
+      tr {
+        th {
+          @extend %table-line;
+        }
+      }
+    }
+    tbody {
+      border-left: 1px solid #fff;
+      tr {
+        td {
+          @extend %table-line;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
