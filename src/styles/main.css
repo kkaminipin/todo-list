@@ -191,4 +191,13 @@ table {
 
 button {
   cursor: pointer;
+}
+
+.btn--bg-primary {
+  background-color: blue;
+  color: #fff;
+}
+.btn--bg-danger {
+  background-color: red;
+  color: #fff;
 }/*# sourceMappingURL=main.css.map */
