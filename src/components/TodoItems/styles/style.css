@@ -1,3 +1,6 @@
-.todo__table .todo__btn-modify + .todo__btn-del {
-  margin-left: 1rem;
+.todo__table .todo__btn {
+  margin-right: 1rem;
+}
+.todo__table .todo__btn:last-of-type {
+  margin-right: 0;
 }/*# sourceMappingURL=style.css.map */

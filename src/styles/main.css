@@ -133,6 +133,7 @@ time,
 mark,
 audio,
 video {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: 0;
@@ -161,9 +162,7 @@ html {
 }
 
 body {
-  background-color: #000;
   font-size: 1.8rem;
-  color: #fff;
 }
 
 ol,
@@ -195,6 +194,10 @@ button {
 
 .btn--bg-primary {
   background-color: blue;
+  color: #fff;
+}
+.btn--bg-success {
+  background-color: green;
   color: #fff;
 }
 .btn--bg-danger {

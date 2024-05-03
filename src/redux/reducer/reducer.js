@@ -5,12 +5,12 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   // console.log('payload', action.payload);
-  console.log('state', state.todo);
+  // console.log('state', state.todo);
 
   switch (action.type) {
     case 'text':
       return { ...state, text: action.payload };
-    case 'todoListCreate':
+    case 'todoCreate':
       return {
         ...state,
         todo: [
@@ -31,11 +31,10 @@ function reducer(state = initialState, action) {
         //   password: [...state.todo.password, action.payload],
         // },
       };
-    case 'todoListDelete':
+    case 'todoReset':
       return {
         ...state,
         todo: [...action.payload],
-        text: '',
       };
 
     default:

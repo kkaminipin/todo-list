@@ -1,5 +1,5 @@
 import TodoTable from '../../components/TodoTable';
-import TodoEvents from '../../components/TodoEvents';
+import TodoHeader from '../../components/TodoHeader';
 import Aside from '../../layouts/Aside';
 import './styles/style.css';
 
@@ -7,9 +7,11 @@ const Todo = () => {
   return (
     <>
       <Aside />
-      <main className='main todo'>
-        <TodoEvents />
-        <TodoTable />
+      <main className='main'>
+        <div className='todo'>
+          <TodoHeader />
+          <TodoTable />
+        </div>
       </main>
     </>
   );
