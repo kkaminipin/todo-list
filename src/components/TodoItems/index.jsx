@@ -2,18 +2,23 @@ import PropTypes from 'prop-types';
 import './styles/style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
+// import RegisterImage from '../../assets/images/modify.png';
 
-const TodoItems = ({ item, index }) => {
+const TodoItems = ({ todoItem, index }) => {
   const dispatch = useDispatch();
+
+  console.log('todoItem : ', todoItem);
 
   const focusTest = useRef();
 
   const todo = useSelector((state) => state.todo);
   const modify = useSelector((state) => state.todo[index].modify);
 
+  console.log('현재 TODO', todo);
   const onModifyBtn = () => {
     if (todo[index].modify === false) {
       todo[index].modify = true;
+      console.log('tsts');
       setTimeout(() => {
         focusTest.current.focus();
       }, 0);
@@ -52,7 +57,6 @@ const TodoItems = ({ item, index }) => {
       2-5. todo[index]로 해당 부분의 투두 리스트 list 값에 파라미터로 받아온 event로   event.target.value를 넣어준다.
       2-6. 
     3. 
-
     
     
     ※ 공백일 시에는 alert 창 띄우기
@@ -63,6 +67,7 @@ const TodoItems = ({ item, index }) => {
     <>
       <td>{index + 1}</td>
       <td>
+        {/* 240503 컴포넌트화 시켜서 useRef 사용하기 */}
         {modify === true ? (
           <div>
             <input
@@ -73,10 +78,12 @@ const TodoItems = ({ item, index }) => {
             />
           </div>
         ) : (
-          <div>{item}</div>
+          <div>{todoItem.title}</div>
         )}
+        {/* // 240503 컴포넌트화 시켜서 useRef 사용하기 */}
       </td>
       <td>
+        {/* 240503 컴포넌트화 시키기 */}
         {modify === true ? (
           <button
             type='submit'
@@ -102,21 +109,14 @@ const TodoItems = ({ item, index }) => {
         >
           삭제
         </button>
-        <button
-          type='button'
-          onClick={() => {
-            focusTest.current.focus();
-          }}
-        >
-          포커스
-        </button>
+        {/* // 240503 컴포넌트화 시키기 */}
       </td>
     </>
   );
 };
 
 TodoItems.propTypes = {
-  item: PropTypes.string.isRequired,
+  todoItem: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
 };
 

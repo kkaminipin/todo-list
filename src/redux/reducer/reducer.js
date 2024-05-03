@@ -4,7 +4,8 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  // console.log('payload', action.payload);
+  console.log('payload', action.payload);
+  console.log('state 변경');
   // console.log('state', state.todo);
 
   switch (action.type) {
@@ -16,20 +17,15 @@ function reducer(state = initialState, action) {
         todo: [
           ...state.todo,
           {
+            id: action.payload,
             number: action.payload,
-            list: state.text,
+            title: state.text,
             modify: false,
             password: action.payload,
+            // state:"미완성"   이렇게 추가해서 상태에 따른 값 불러서 뷰에 뿌리기
           },
         ],
         text: '',
-
-        // todo: {
-        //   number: [...state.todo.number, action.payload],
-        //   list: [...state.todo.list, state.text],
-        //   modify: [...state.todo.modify, false],
-        //   password: [...state.todo.password, action.payload],
-        // },
       };
     case 'todoReset':
       return {

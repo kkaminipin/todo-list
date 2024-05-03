@@ -1,6 +1,6 @@
-.todo__table .todo__btn {
+.todo__header .todo__btn {
   margin-right: 1rem;
 }
-.todo__table .todo__btn:last-of-type {
+.todo__header .todo__btn:last-of-type {
   margin-right: 0;
 }/*# sourceMappingURL=style.css.map */

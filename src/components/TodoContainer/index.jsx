@@ -3,17 +3,17 @@ import { useSelector } from 'react-redux';
 
 import './styles/style.css';
 
-const TodoTable = () => {
+const TodoContainer = () => {
   const todo = useSelector((state) => state.todo);
 
   return (
-    <table className='todo__table'>
+    <table className='todo__container'>
       <colgroup>
         <col width={50} />
         <col width={'auto'} />
         <col width={200} />
       </colgroup>
-      {/* <thead>
+      {/* <thead>pnpm
         <tr>
           <th>번호</th>
           <th>리스트</th>
@@ -21,10 +21,10 @@ const TodoTable = () => {
         </tr>
       </thead> */}
       <tbody>
-        {todo.map((item, index) => {
+        {todo.map((todoItem, index) => {
           return (
             <tr key={index}>
-              <TodoItems item={item.list} index={index} />
+              <TodoItems todoItem={todoItem} index={index} />
             </tr>
           );
         })}
@@ -33,4 +33,4 @@ const TodoTable = () => {
   );
 };
 
-export default TodoTable;
+export default TodoContainer;

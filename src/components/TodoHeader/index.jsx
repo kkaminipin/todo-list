@@ -9,7 +9,14 @@ const TodoHeader = () => {
   /* 등록 버튼 */
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch({ type: 'todoCreate', payload: Date.now() });
+    dispatch({
+      type: 'todoCreate',
+      payload: {
+        id: Date.now(),
+        text: text,
+        password: text,
+      },
+    });
   };
 
   /* 입력 인풋 */

@@ -179,7 +179,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -203,4 +203,4 @@ button {
 .btn--bg-danger {
   background-color: red;
   color: #fff;
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */

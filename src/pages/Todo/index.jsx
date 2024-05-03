@@ -1,4 +1,4 @@
-import TodoTable from '../../components/TodoTable';
+import TodoContainer from '../../components/TodoContainer';
 import TodoHeader from '../../components/TodoHeader';
 import Aside from '../../layouts/Aside';
 import './styles/style.css';
@@ -10,7 +10,7 @@ const Todo = () => {
       <main className='main'>
         <div className='todo'>
           <TodoHeader />
-          <TodoTable />
+          <TodoContainer />
         </div>
       </main>
     </>
