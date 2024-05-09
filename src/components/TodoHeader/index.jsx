@@ -4,19 +4,20 @@ import StatusButtons from '../StatusButtons';
 import './styles/style.css';
 
 const TodoHeader = () => {
-  // const [todoTitle, setTodoTitle] = useState('');
+  const [todoTitle, setTodoTitle] = useState('');
   const dispatch = useDispatch();
-  const todoTitle = useSelector((state) => state.todoTitle);
+  // const todoTitle = useSelector((state) => state.todoTitle);
 
   const onKeyEnter = (event) => {
     if (event.key === 'Enter') {
-      dispatch({ type: 'todoCreate' });
+      dispatch({ type: 'todoCreate', payload: todoTitle });
+      setTodoTitle('');
     }
   };
 
   const onCreateInput = (event) => {
-    dispatch({ type: 'todoTitle', payload: event.target.value });
-    // setTodoTitle(event.target.value);
+    // dispatch({ type: 'todoTitle', payload: event.target.value });
+    setTodoTitle(event.target.value);
   };
 
   return (

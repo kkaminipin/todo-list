@@ -14,12 +14,28 @@ const TodoItemButtons = ({ todoItem }) => {
     });
     dispatch({ type: 'todoReDraw', payload: newList });
   };
+  const onModifyBtn = () => {
+    dispatch({
+      type: 'todoUpdate',
+      payload: {
+        ...todoItem,
+        modify: true,
+      },
+    });
+  };
   return (
     <>
+      {/* 
+      <MyButton>
+      </MyButton>
+      <MyButton >
+      </MyButton>
+      
+    */}
       <button
         type='button'
         className='btn btn--modify todo__btn'
-        // onClick={onModifyBtn}
+        onClick={onModifyBtn}
       >
         <img src={btnModify} alt='수정' className='todo__btn-img' />
       </button>

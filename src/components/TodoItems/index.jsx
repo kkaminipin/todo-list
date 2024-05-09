@@ -5,11 +5,49 @@ import { useSelector } from 'react-redux';
 // import TodoItem from '../TodoItem';
 
 import './styles/style.css';
+import { useDispatch } from 'react-redux';
 
 const TodoItems = () => {
   const todoItems = useSelector((state) => state.todoItems);
 
-  const [btnState, setBtnState] = useState('미진행');
+  const dispatch = useDispatch();
+
+  const onStatusChangeBtn = (event, todoItem) => {
+    let state = getNextState(todoItem.state);
+
+    dispatch({
+      type: 'todoUpdate',
+      payload: {
+        ...todoItem,
+        state,
+      },
+    });
+  };
+
+  const getNextState = (state) => {
+    switch (state) {
+      case '미진행':
+        return '진행중';
+      case '진행중':
+        return '완료';
+      case '완료':
+        return '미진행';
+      default:
+        return '';
+    }
+  };
+
+  const getProgressClassNames = (todoItem) => {
+    switch (todoItem.state) {
+      case '미진행':
+        return 'status-btn--not-progressed';
+      case '진행중':
+        return 'status-btn--ongoing';
+      case '완료':
+        return 'status-btn--completion';
+    }
+  };
+
   return (
     <>
       {todoItems.map((todoItem, index) => {
@@ -32,28 +70,6 @@ const TodoItems = () => {
         };
         */
 
-        const onStatusChangeBtn = (event) => {
-          switch (todoItem.state) {
-            case '미진행':
-              event.target.classList.remove('status-btn--not-progressed');
-              event.target.classList.add('status-btn--ongoing');
-              todoItem.state = '진행중';
-              setBtnState('진행중');
-              break;
-            case '진행중':
-              event.target.classList.remove('status-btn--ongoing');
-              event.target.classList.add('status-btn--completion');
-              todoItem.state = '완료';
-              setBtnState('완료');
-              break;
-            case '완료':
-              event.target.classList.remove('status-btn--completion');
-              event.target.classList.add('status-btn--not-progressed');
-              todoItem.state = '미진행';
-              setBtnState('미진행');
-              break;
-          }
-        };
         return (
           /* 
             <TodoItem /> 
@@ -65,25 +81,30 @@ const TodoItems = () => {
             그러므로  <TodoItem />를 컴포넌트화 시키는것이 좋은 방법이 아닐 수 있다.
           */
 
-          <tr key={index}>
-            <td>{index + 1}</td>
-            <td>
-              <button
-                className='status-btn status-btn--not-progressed'
-                onClick={(event) => {
-                  onStatusChangeBtn(event);
-                }}
-              >
-                <span className='blind'>{btnState}</span>
-              </button>
-            </td>
-            <td>
-              <TodoTitleOrModifyInput todoItem={todoItem} />
-            </td>
-            <td>
-              <TodoItemButtons todoItem={todoItem} />
-            </td>
-          </tr>
+          <>
+            {/* <React.Fragment key={}>*/}
+            {/* <TodoItem />  */}
+            <tr key={todoItem.id}>
+              <td>{index + 1}</td>
+              <td>
+                <button
+                  className={'status-btn ' + getProgressClassNames(todoItem)}
+                  onClick={(event) => {
+                    onStatusChangeBtn(event, todoItem);
+                  }}
+                >
+                  <span className='blind'>{todoItem.state}</span>
+                </button>
+              </td>
+              <td>
+                <TodoTitleOrModifyInput todoItem={todoItem} />
+              </td>
+              <td>
+                <TodoItemButtons todoItem={todoItem} />
+              </td>
+            </tr>
+            {/*</React.Fragment>*/}
+          </>
         );
       })}
     </>
