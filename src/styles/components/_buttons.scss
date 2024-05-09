@@ -1,5 +1,14 @@
 .btn {
   // 버튼 사이즈
+
+  &--modify {
+    width: 4rem;
+  }
+
+  &--del {
+    width: 3.4rem;
+  }
+
   &--sm {
     height: 3rem;
     padding: 0 1rem;
@@ -11,16 +20,10 @@
   // 버튼 컬러
   &--bg {
     &-primary {
-      background-color: blue;
-      color: #fff;
     }
     &-success {
-      background-color: green;
-      color: #fff;
     }
     &-danger {
-      background-color: red;
-      color: #fff;
     }
   }
 }
@@ -31,6 +34,9 @@
   &:last-of-type {
     margin-right: 0;
   }
+}
+.todo__btn-img {
+  width: 100%;
 }
 
 // 상태 버튼

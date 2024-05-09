@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
+import btnModify from '../../assets/images/btn_modify.png';
+import btnDelete from '../../assets/images/btn_delete.png';
 
 const TodoItemButtons = ({ todoItem }) => {
   const dispatch = useDispatch();
@@ -16,17 +18,17 @@ const TodoItemButtons = ({ todoItem }) => {
     <>
       <button
         type='button'
-        className='todo__btn btn--sm btn--bg-primary'
+        className='btn btn--modify todo__btn'
         // onClick={onModifyBtn}
       >
-        수정
+        <img src={btnModify} alt='수정' className='todo__btn-img' />
       </button>
       <button
         type='button'
-        className='todo__btn btn--sm btn--bg-danger'
+        className='btn btn--del todo__btn'
         onClick={onDeleteBtn}
       >
-        삭제
+        <img src={btnDelete} alt='삭제' className='todo__btn-img' />
       </button>
     </>
   );

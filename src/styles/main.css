@@ -194,6 +194,8 @@ a {
 
 button {
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 .blind {
@@ -209,6 +211,12 @@ button {
   padding: 2rem;
 }
 
+.btn--modify {
+  width: 4rem;
+}
+.btn--del {
+  width: 3.4rem;
+}
 .btn--sm {
   height: 3rem;
   padding: 0 1rem;
@@ -216,24 +224,15 @@ button {
   border-radius: 3px;
   vertical-align: middle;
 }
-.btn--bg-primary {
-  background-color: blue;
-  color: #fff;
-}
-.btn--bg-success {
-  background-color: green;
-  color: #fff;
-}
-.btn--bg-danger {
-  background-color: red;
-  color: #fff;
-}
-
 .todo__btn {
   margin-right: 10px;
 }
 .todo__btn:last-of-type {
   margin-right: 0;
+}
+
+.todo__btn-img {
+  width: 100%;
 }
 
 .status-btn {
