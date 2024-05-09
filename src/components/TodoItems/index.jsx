@@ -1,123 +1,93 @@
-import PropTypes from 'prop-types';
+import TodoTitleOrModifyInput from '../TodoTitleOrModifyInput';
+import TodoItemButtons from '../TodoItemButtons';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+// import TodoItem from '../TodoItem';
+
 import './styles/style.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { useRef } from 'react';
-// import RegisterImage from '../../assets/images/modify.png';
 
-const TodoItems = ({ todoItem, index }) => {
-  const dispatch = useDispatch();
+const TodoItems = () => {
+  const todoItems = useSelector((state) => state.todoItems);
 
-  console.log('todoItem : ', todoItem);
-
-  const focusTest = useRef();
-
-  const todo = useSelector((state) => state.todo);
-  const modify = useSelector((state) => state.todo[index].modify);
-
-  console.log('현재 TODO', todo);
-  const onModifyBtn = () => {
-    if (todo[index].modify === false) {
-      todo[index].modify = true;
-      console.log('tsts');
-      setTimeout(() => {
-        focusTest.current.focus();
-      }, 0);
-    } else {
-      todo[index].modify = false;
-    }
-    dispatch({ type: 'todoReset', payload: todo });
-  };
-
-  const onDeleteBtn = () => {
-    const newArray = todo.filter((item, i) => {
-      if (index !== i) {
-        return item;
-      }
-    });
-    dispatch({ type: 'todoReset', payload: newArray });
-  };
-
-  const onModifyInput = (event, index) => {
-    todo[index].list = event.target.value;
-  };
-
-  const onKeyEnter = (event) => {
-    if (event.key === 'Enter') {
-      onModifyBtn();
-    }
-  };
-
-  /*
-    1. 수정을 누르면 인풋 창이 나타나고 수정 버튼이 등록으로 바뀐다.
-    2. 인풋에 입력을 한 뒤 등록 버튼을 누르면 인풋창이 없어지고 기존의 값이 입력한 값으로 바뀐다.
-      2-1. 수정 인풋에 새로운 onChange를 넣는다. (처음엔 기존 onModifyBtn 으로 하려고 했는데 수정 버튼이라 input의 입력값을 알 수 없음)
-      2-2. onChange에 함수를 만들고 인자값으로 event 와 index를 보낸다. 
-      2-3. 새로 만든 함수에서 모든 리스트를 새로 다시 그려야하므로 모든 정보가 저장되어 있는 todo를 가져와서 map으로 돌린다.
-      2-4. 아규먼트로 보낸 index와 map 함수 파라미터 2번째 값인 i로 수정하고자 하는 배열의 인덱스를 맞춰서 찾는다.
-      2-5. todo[index]로 해당 부분의 투두 리스트 list 값에 파라미터로 받아온 event로   event.target.value를 넣어준다.
-      2-6. 
-    3. 
-    
-    
-    ※ 공백일 시에는 alert 창 띄우기
-    ※ 기능 참고 : https://velog.io/@dongoc21hj/Project-Retrotodo-ver.1-Preview
-    ※ 리스트 클릭을 하면 수정 인풋 나오기 참고: https://chaelin1211.github.io/study/2021/04/02/todo-project-13.html
-  */
+  const [btnState, setBtnState] = useState('미진행');
   return (
     <>
-      <td>{index + 1}</td>
-      <td>
-        {/* 240503 컴포넌트화 시켜서 useRef 사용하기 */}
-        {modify === true ? (
-          <div>
-            <input
-              type='text'
-              onChange={(event) => onModifyInput(event, index)}
-              onKeyDown={(event) => onKeyEnter(event)}
-              ref={focusTest}
-            />
-          </div>
-        ) : (
-          <div>{todoItem.title}</div>
-        )}
-        {/* // 240503 컴포넌트화 시켜서 useRef 사용하기 */}
-      </td>
-      <td>
-        {/* 240503 컴포넌트화 시키기 */}
-        {modify === true ? (
-          <button
-            type='submit'
-            className='todo__btn todo__btn-registration btn--bg-success'
-            onClick={onModifyBtn}
-          >
-            등록
-          </button>
-        ) : (
-          <button
-            type='button'
-            className='todo__btn todo__btn-modify btn--bg-primary'
-            onClick={onModifyBtn}
-          >
-            수정
-          </button>
-        )}
+      {todoItems.map((todoItem, index) => {
+        /*
+        - 아래 onModifyBtn 함수는  TodoTitleOrModifyInput 와 TodoItemButtons 에서 둘 다 쓰인다.
+        - 그래서 redux로 빼고 싶은데  함수를 redux로 빼는 방법을 모르겠다.
+        - 리덕스로 빼도 initialState 전역 변수에 넣는 방법 밖에 모른다.
+        - initialState 전역변수로 빼도 onModifyBtn 안에 있는 todoItem이 또 있어야하므로 복잡하다.
+        - 지금까지 생각나는 건   1. onModifyBtn 과 todoItem 을 같이 initialState에 저장하는것이나
+        - 2. 그냥 props로 onModifyBtn을 두곳에 보내는 것인데   만약 나중에 실무에서 redux로 보내야하는 경우를 위해
+        이런 경우에서 redux로 보내는 경우를 알아야한다.
+        
+        const onModifyBtn = () => {
+          if (todoItem.modify === false) {
+            todoItem.modify = true;
+          } else {
+            todoItem.modify = false;
+          }
+          dispatch({ type: 'todoReDraw', payload: todoItems });
+        };
+        */
 
-        <button
-          type='button'
-          className='todo__btn todo__btn-del btn--bg-danger'
-          onClick={onDeleteBtn}
-        >
-          삭제
-        </button>
-        {/* // 240503 컴포넌트화 시키기 */}
-      </td>
+        const onStatusChangeBtn = (event) => {
+          switch (todoItem.state) {
+            case '미진행':
+              event.target.classList.remove('status-btn--not-progressed');
+              event.target.classList.add('status-btn--ongoing');
+              todoItem.state = '진행중';
+              setBtnState('진행중');
+              break;
+            case '진행중':
+              event.target.classList.remove('status-btn--ongoing');
+              event.target.classList.add('status-btn--completion');
+              todoItem.state = '완료';
+              setBtnState('완료');
+              break;
+            case '완료':
+              event.target.classList.remove('status-btn--completion');
+              event.target.classList.add('status-btn--not-progressed');
+              todoItem.state = '미진행';
+              setBtnState('미진행');
+              break;
+          }
+        };
+        return (
+          /* 
+            <TodoItem /> 
+            아래 tr이나 tr 밑에 td들을 TodoItem로 컴퍼넌트화 시키려고 하였는데
+            그렇게 되면 또 todoItem을 props로 TodoItem에 보내야하고 
+            TodoItem 안에서 또 
+            TodoTitleOrModifyInput 와 TodoItemButtons 한테 컴포넌트로 보내야해서
+            redux로 뺴야한다. 
+            그러므로  <TodoItem />를 컴포넌트화 시키는것이 좋은 방법이 아닐 수 있다.
+          */
+
+          <tr key={index}>
+            <td>{index + 1}</td>
+            <td>
+              <button
+                className='status-btn status-btn--not-progressed'
+                onClick={(event) => {
+                  onStatusChangeBtn(event);
+                }}
+              >
+                <span className='blind'>{btnState}</span>
+              </button>
+            </td>
+            <td>
+              <TodoTitleOrModifyInput todoItem={todoItem} />
+            </td>
+            <td>
+              <TodoItemButtons todoItem={todoItem} />
+            </td>
+          </tr>
+        );
+      })}
     </>
   );
-};
-
-TodoItems.propTypes = {
-  todoItem: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
 };
 
 export default TodoItems;

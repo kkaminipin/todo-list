@@ -1,0 +1,10 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+.pagination__li {
+  margin-right: 2rem;
+}
+.pagination__link {
+  color: #000;
+}/*# sourceMappingURL=style.css.map */

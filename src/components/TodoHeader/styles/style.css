@@ -3,26 +3,26 @@
   padding: 1.5rem;
   border-bottom: 3px solid #000;
 }
-.todo__header-sort {
+
+.todo__header-content {
   display: flex;
   justify-content: space-between;
 }
+
+.todo__status-btn {
+  margin-top: 5px;
+}
+
 .todo__title {
   margin-bottom: 1rem;
   font-weight: 700;
 }
-.todo__input {
+
+.input-create {
   height: 3rem;
   padding: 0 1rem;
   margin: 0;
   background-color: #f2ead6;
   border: 2px solid #000;
   border-radius: 8px;
-}
-.todo__btn {
-  height: 3rem;
-  padding: 0 1rem;
-  border: none;
-  border-radius: 3px;
-  vertical-align: middle;
 }/*# sourceMappingURL=style.css.map */

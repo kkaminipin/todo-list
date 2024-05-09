@@ -1,36 +1,25 @@
-.todo {
-  &__header {
-    width: 100%;
-    padding: 1.5rem;
-    border-bottom: 3px solid #000;
-  }
-  &__header-sort {
-    display: flex;
-    justify-content: space-between;
-  }
-  &__form {
-  }
-  &__state {
-  }
-  &__right {
-  }
-  &__title {
-    margin-bottom: 1rem;
-    font-weight: 700;
-  }
-  &__input {
-    height: 3rem;
-    padding: 0 1rem;
-    margin: 0;
-    background-color: #f2ead6;
-    border: 2px solid #000;
-    border-radius: 8px;
-  }
-  &__btn {
-    height: 3rem;
-    padding: 0 1rem;
-    border: none;
-    border-radius: 3px;
-    vertical-align: middle;
-  }
+.todo__header {
+  width: 100%;
+  padding: 1.5rem;
+  border-bottom: 3px solid #000;
+}
+.todo__header-content {
+  display: flex;
+  justify-content: space-between;
+}
+.todo__status-btn {
+  margin-top: 5px;
+}
+.todo__title {
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.input-create {
+  height: 3rem;
+  padding: 0 1rem;
+  margin: 0;
+  background-color: #f2ead6;
+  border: 2px solid #000;
+  border-radius: 8px;
 }

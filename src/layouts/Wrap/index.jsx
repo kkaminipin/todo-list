@@ -1,6 +1,6 @@
 import Header from '../Header';
+import Body from '../Body';
 import Footer from '../Footer';
-import Container from '../Container';
 
 import './styles/style.css';
 
@@ -8,7 +8,7 @@ const Wrap = () => {
   return (
     <div className='wrap'>
       <Header />
-      <Container />
+      <Body />
       <Footer />
     </div>
   );

@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import './styles/style.css';
 
-const Container = () => {
+const Body = () => {
   return (
     <>
-      <div className='container'>
+      <div className='body'>
         <Outlet />
       </div>
     </>
   );
 };
 
-export default Container;
+export default Body;

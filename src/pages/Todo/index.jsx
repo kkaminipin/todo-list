@@ -1,16 +1,18 @@
-import TodoContainer from '../../components/TodoContainer';
 import TodoHeader from '../../components/TodoHeader';
+import TodoBody from '../../components/TodoBody';
 import Aside from '../../layouts/Aside';
 import './styles/style.css';
+import Pagination from '../../components/Pagination';
 
 const Todo = () => {
   return (
     <>
-      <Aside />
+      {/* <Aside /> */}
       <main className='main'>
         <div className='todo'>
           <TodoHeader />
-          <TodoContainer />
+          <TodoBody />
+          <Pagination />
         </div>
       </main>
     </>

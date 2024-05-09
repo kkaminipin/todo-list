@@ -1,0 +1,6 @@
+.todo__header .todo__btn {
+  margin-right: 1rem;
+}
+.todo__header .todo__btn:last-of-type {
+  margin-right: 0;
+}/*# sourceMappingURL=style.css.map */

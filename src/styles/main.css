@@ -179,7 +179,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -188,10 +188,34 @@ table {
   border-spacing: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 button {
   cursor: pointer;
 }
 
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.main {
+  padding: 2rem;
+}
+
+.btn--sm {
+  height: 3rem;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 3px;
+  vertical-align: middle;
+}
 .btn--bg-primary {
   background-color: blue;
   color: #fff;
@@ -203,4 +227,36 @@ button {
 .btn--bg-danger {
   background-color: red;
   color: #fff;
-} /*# sourceMappingURL=main.css.map */
+}
+
+.todo__btn {
+  margin-right: 10px;
+}
+.todo__btn:last-of-type {
+  margin-right: 0;
+}
+
+.status-btn {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
+  border: 1px solid #000;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.status-btn:last-of-type {
+  margin-right: 0;
+}
+.status-btn.active {
+  opacity: 1;
+}
+.status-btn--not-progressed {
+  background-color: #f16170;
+}
+.status-btn--ongoing {
+  background-color: #f9db86;
+}
+.status-btn--completion {
+  background-color: #91e89b;
+}/*# sourceMappingURL=main.css.map */

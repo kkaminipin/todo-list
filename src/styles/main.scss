@@ -48,15 +48,15 @@ sass/
 
 */
 
-@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins',
-  'abstracts/placeholders';
+@import 'abstracts/extends', 'abstracts/variables', 'abstracts/functions',
+  'abstracts/mixins', 'abstracts/placeholders';
 
 @import 'vendors/bootstrap', 'vendors/jquery-ui';
 
 @import 'base/reset', 'base/typography';
 
 @import 'layout/navigation', 'layout/grid', 'layout/header', 'layout/footer',
-  'layout/sidebar', 'layout/forms';
+  'layout/sidebar', 'layout/forms', 'layout/common';
 
 @import 'components/buttons', 'components/carousel', 'components/cover',
   'components/dropdown';
